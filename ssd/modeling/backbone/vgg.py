@@ -111,8 +111,8 @@ class VGG(nn.Module):
 def vgg(cfg, pretrained=True):
     model = VGG(cfg)
     if pretrained:
-        #model.init_from_pretrain(load_state_dict_from_url(model_urls['vgg']))
-        model.init_from_pretrain(torch.load('vgg16_reducedfc.pth', map_location="cpu"))
-        #model.init_from_pretrain(torch.load('vgg_ssd512_voc0712.pth', map_location="cpu"))
+        model.init_from_pretrain(load_state_dict_from_url(model_urls['vgg']))
+        # model.init_from_pretrain(torch.load('vgg16_reducedfc.pth', map_location="cpu"))
+        # model.init_from_pretrain(torch.load('vgg_ssd512_voc0712.pth', map_location="cpu"))
 
     return model

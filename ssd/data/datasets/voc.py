@@ -9,8 +9,8 @@ from ssd.structures.container import Container
 
 class VOCDataset(torch.utils.data.Dataset):
     class_names = ('__background__',
-                   'hu',
-                   'shu')
+                   'ybempty',
+                   'ybopen')
 
     def __init__(self, data_dir, split, transform=None, target_transform=None, keep_difficult=False):
         """Dataset for VOC data.
@@ -92,7 +92,7 @@ class VOCDataset(torch.utils.data.Dataset):
         return {"height": im_info[0], "width": im_info[1]}
 
     def _read_image(self, image_id):
-        image_file = os.path.join(self.data_dir, "JPEGImages", "%s.bmp" % image_id)
+        image_file = os.path.join(self.data_dir, "JPEGImages", "%s.jpg" % image_id)
         image = Image.open(image_file).convert("RGB")
         image = np.array(image)
         return image
