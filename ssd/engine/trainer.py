@@ -101,12 +101,14 @@ def do_train(cfg, model,
                     "iter: {iter:06d}",
                     "lr: {lr:.5f}",
                     '{meters}',
-                    "eta: {eta}"
+                    "eta: {eta}",
+                    'mem: {mem}M'
                 ]).format(
                     iter=iteration,
                     lr=optimizer.param_groups[0]['lr'],
                     meters=str(meters),
-                    eta=eta_string
+                    eta=eta_string,
+                    mem=round(torch.cuda.max_memory_allocated() / 1024.0 / 1024.0)
                 )
             )
             if summary_writer:

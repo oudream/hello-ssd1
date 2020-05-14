@@ -4,7 +4,7 @@ _C = CN()
 
 _C.MODEL = CN()
 _C.MODEL.META_ARCHITECTURE = 'SSDDetector'
-_C.MODEL.DEVICE = "cpu"
+_C.MODEL.DEVICE = "cuda"
 # match default boxes to any ground truth with jaccard overlap higher than a threshold (0.5)
 _C.MODEL.THRESHOLD = 0.5
 _C.MODEL.NUM_CLASSES = 21
@@ -65,7 +65,7 @@ _C.DATASETS.TEST = ()
 # -----------------------------------------------------------------------------
 _C.DATA_LOADER = CN()
 # Number of data loading threads
-_C.DATA_LOADER.NUM_WORKERS = 0
+_C.DATA_LOADER.NUM_WORKERS = 8
 _C.DATA_LOADER.PIN_MEMORY = True
 
 # ---------------------------------------------------------------------------- #
